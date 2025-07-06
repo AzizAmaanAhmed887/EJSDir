@@ -1,13 +1,19 @@
 const express = require('express');
 const app = express();
+const path = require('path');
 
 let port = 8080;
 
-app.set('view engine', 'ejs');
+app.set('views engine', 'ejs');
 
-//Set the server
-app.get('/', (req, res) => {
+app.set("views" , path.join(__dirname, "views"));
+// /home route
+app.get('/home', (req, res) => {
     res.send("This is the home page");
+});
+//root path
+app.get('/', (req, res) => {
+    res.render('home.ejs');
 });
 
 app.listen(port, () => {
