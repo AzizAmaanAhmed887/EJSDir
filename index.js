@@ -7,6 +7,11 @@ let port = 8080;
 app.set('views engine', 'ejs');
 
 app.set("views", path.join(__dirname, "views"));
+
+app.get('/ig/:username', (req, res) => {
+    let {username} = req.params;
+    res.render('instagram.ejs' , {username});
+})
 // /home route
 app.get('/home', (req, res) => {
     res.send("This is the home page");
