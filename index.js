@@ -9,8 +9,9 @@ app.set('views engine', 'ejs');
 app.set("views", path.join(__dirname, "views"));
 
 app.get('/ig/:username', (req, res) => {
+    const followers = ["Amaan" , "Azaj" , "Aryan" , "Arbab"] //loops is EJS
     let {username} = req.params;
-    res.render('instagram.ejs' , {username});
+    res.render('instagram.ejs', {username, followers});
 })
 // /home route
 app.get('/home', (req, res) => {
