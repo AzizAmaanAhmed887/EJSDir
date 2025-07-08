@@ -9,9 +9,11 @@ app.set('views engine', 'ejs');
 app.set("views", path.join(__dirname, "views"));
 
 app.get('/ig/:username', (req, res) => {
-    const followers = ["Amaan" , "Azaj" , "Aryan" , "Arbab"] //loops is EJS
-    let {username} = req.params;
-    res.render('instagram.ejs', {username, followers});
+    let username = req.params.username; // taking dynamic value
+    const instaData = require("./data.json") // object is required
+    const data = instaData[username]; // set to given object's dynamic value and stores it in the variable
+    console.log(data);// written for check
+    res.render('instagram.ejs', {data}); // rendered it
 })
 // /home route
 app.get('/home', (req, res) => {

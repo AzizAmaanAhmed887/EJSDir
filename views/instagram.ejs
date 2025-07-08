@@ -7,26 +7,23 @@
     <meta http-equiv="X-UA-Compatible" content="ie=edge">
     <title>Instagram</title>
     <style>
-        h1 {
-            color: rebeccapurple;
-        }
-
-        button {
-            border: 2px solid green;
-            border-radius: 10px;
-            color: red;
+        img {
+            height: 100px;
+            width: 100px;
         }
     </style>
 </head>
 <body>
-<h1>You're in profile @<%= username %> </h1>
+<h1>@<%= data.name %> </h1>
 <button>Follow</button>
 <button>Search</button>
-<% for(let follower of followers){ %> // performing JS logic inside EJS tags
-<ul>
-    <li><%=follower%></li>
-</ul>
-<% } %> // performing JS logic inside EJS
+<p>Followers : <%= data.followers %> &nbsp &nbsp Following : <%= data.following %></p>
+<hr>
+<h2>Posts</h2>
+<% for(post of data.posts){ %>
+    <img src="<%= post.image %>" alt="">
+<% } %>
+
 </body>
 </html>
 
