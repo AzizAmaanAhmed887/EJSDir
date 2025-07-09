@@ -5,21 +5,21 @@ const path = require('path');
 let port = 8080;
 
 app.set('views engine', 'ejs');
-
 app.set("views", path.join(__dirname, "views"));
 
 app.get('/ig/:username', (req, res) => {
-    let username = req.params.username; // taking dynamic value
-    const instaData = require("./data.json") // object is required
-    const data = instaData[username]; // set to given object's dynamic value and stores it in the variable
-    console.log(data);// written for check
-    res.render('instagram.ejs', {data}); // rendered it
+    let {username} = req.params;
+    let instaData = require('./data.json')
+    const data = instaData[username]
+    if (data) { //if valid data, render instagram.ejs
+        res.render("instagram.ejs", {data});
+    } else { //else print the page shows "page not found"
+        res.render("404.ejs");
+    }
 })
-// /home route
 app.get('/home', (req, res) => {
     res.send("This is the home page");
 });
-//root path
 app.get('/', (req, res) => {
     res.render('home.ejs');
 });
