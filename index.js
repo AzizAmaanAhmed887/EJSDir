@@ -7,6 +7,9 @@ let port = 8080;
 app.set('views engine', 'ejs');
 app.set("views", path.join(__dirname, "views"));
 
+// Middleware to serve static files
+app.use(express.static(path.join(__dirname, 'public')));
+
 app.get('/ig/:username', (req, res) => {
     let {username} = req.params;
     let instaData = require('./data.json')
