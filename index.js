@@ -5,8 +5,8 @@ const path = require('path');
 let port = 8080;
 
 // Middleware to serve static files
-app.use(express.static(path.join(__dirname, 'public/css'))); // Even helps the server to start the server from the parent directory.
-app.use(express.static(path.join(__dirname, 'public/js'))); // Even helps the server to start the server from the parent directory.
+app.use(express.static(path.join(__dirname, 'public/css'))); // Even helps the server to start from the parent directory.
+app.use(express.static(path.join(__dirname, 'public/js'))); // Even helps the server to start from the parent directory.
 
 app.set('views engine', 'ejs');
 app.set("views", path.join(__dirname, "views"));
@@ -15,11 +15,10 @@ app.get('/ig/:username', (req, res) => {
     let {username} = req.params;
     let instaData = require('./data.json')
     const data = instaData[username]
-    if (data) { //if valid data, render instagram.ejs
+    if (data)  //if valid data, render instagram.ejs
         res.render("instagram.ejs", {data});
-    } else { //else print the page shows "page not found"
+     else  //else print the page shows "page not found"
         res.render("404.ejs");
-    }
 })
 app.get('/home', (req, res) => {
     res.send("This is the home page");
