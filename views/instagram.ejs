@@ -6,23 +6,19 @@
           content="width=device-width, user-scalable=no, initial-scale=1.0, maximum-scale=1.0, minimum-scale=1.0">
     <meta http-equiv="X-UA-Compatible" content="ie=edge">
     <title>Instagram</title>
-    <style>
-        img{
-            height: 100px;
-            width: 100px;
-        }
-    </style>
+    <link rel="stylesheet" href="/style.css"><!-- /public ->/css -> style.css files-->
 </head>
 <body>
 <h1>The page belongs to @<%= data.name %> </h1>
 <button>Follow</button>
 <button>Search</button>
-<p>Followers = <%= data.followers %> &nbsp  &nbsp &nbsp Following = <%= data.following %></p>
+<p>Followers = <%= data.followers %> &nbsp &nbsp &nbsp Following = <%= data.following %></p>
 <hr>
 <% for(post of data.posts){ %>
     <img src="<%= post.image %>" alt="">
-    <p>Likes:<%= post.likes %> &nbsp  &nbsp &nbsp Comments:<%= post.comments %></p>
+    <p>Likes:<%= post.likes %> &nbsp &nbsp &nbsp Comments:<%= post.comments %></p>
 <% } %>
 </body>
+<script src="/app.js"></script><!-- /public ->/js -> app.js files-->
 </html>
 

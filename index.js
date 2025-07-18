@@ -4,11 +4,12 @@ const path = require('path');
 
 let port = 8080;
 
+// Middleware to serve static files
+app.use(express.static(path.join(__dirname, 'public/css'))); // Even helps the server to start the server from the parent directory.
+app.use(express.static(path.join(__dirname, 'public/js'))); // Even helps the server to start the server from the parent directory.
+
 app.set('views engine', 'ejs');
 app.set("views", path.join(__dirname, "views"));
-
-// Middleware to serve static files
-app.use(express.static(path.join(__dirname, 'public')));
 
 app.get('/ig/:username', (req, res) => {
     let {username} = req.params;
